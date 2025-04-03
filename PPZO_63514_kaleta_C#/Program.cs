@@ -60,10 +60,11 @@ class Program
                 {
                     return "Bledna operacja arytmetyczna";
                 }
-
                 return "Wynik = " + wynik1;
+
             case 2:
                 Console.WriteLine("Konwerter temperatur (Celsjusz ↔ Fahrenheit)");
+
                 Console.Write("Wybierz kierunek konwersji (C = (Celsjusz -> Fahrenheit) F = (Fahrenheit -> Celsjusz)): ");
                 string zad2_option = Console.ReadLine();
 
@@ -75,19 +76,55 @@ class Program
                 if (zad2_option.Equals("C", StringComparison.OrdinalIgnoreCase))
                 {
                     wynik2 = wartosc * 1.8 + 32;
-                    return $"Wynik = {wynik2}°F";
+                    return "Wynik = " + wynik2 + "°F";
                 }
                 else if (zad2_option.Equals("F", StringComparison.OrdinalIgnoreCase))
                 {
                     wynik2 = (wartosc - 32) / 1.8;
-                    return $"Wynik = {wynik2}°C";
+                    return "Wynik = " + wynik2 + "°C";
                 }
                 else
                 {
                     return "Blednie wprowadzony kierunek konwersji";
                 }
+
+
             case 3:
-                //Console.WriteLine("Srednia ocen ucznia");
+                Console.WriteLine("Srednia ocen ucznia");
+
+                Console.Write("Podaj liczbe ocen: ");
+                int liczba_ocen = int.Parse(Console.ReadLine());
+
+                int suma_ocen = 0;
+
+                for (int i = 0; i < liczba_ocen; i++)
+                {
+                    Console.Write("Podaj ocene: ");
+                    int ocena = int.Parse(Console.ReadLine());
+
+                    if (ocena > 0 && ocena < 7)
+                    {
+                        suma_ocen += ocena;
+                    }
+                    else
+                    {
+                        return "Wprowadzono bledna ocene (poza zakresem 1-6)";
+                    }
+                }
+
+                double wynik3 = (double)suma_ocen / liczba_ocen;
+
+                Console.WriteLine("Srednia ocen ucznia wynosi: " + wynik3);
+
+                if (wynik3 >= 3)
+                {
+                    return "Uczen spelnil warunek zaliczenia";
+                }
+                else
+                {
+                    return "Uczen nie spelnil warunku zaliczenia";
+                }
+
             default:
                 return "Niepoprawna opcja";
         }
