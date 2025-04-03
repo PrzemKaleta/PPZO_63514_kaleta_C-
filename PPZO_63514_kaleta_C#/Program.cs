@@ -63,7 +63,29 @@ class Program
 
                 return "Wynik = " + wynik1;
             case 2:
-                //Console.WriteLine("Konwerter temperatur (Celsjusz ↔ Fahrenheit)");
+                Console.WriteLine("Konwerter temperatur (Celsjusz ↔ Fahrenheit)");
+                Console.Write("Wybierz kierunek konwersji (C = (Celsjusz -> Fahrenheit) F = (Fahrenheit -> Celsjusz)): ");
+                string zad2_option = Console.ReadLine();
+
+                Console.Write("Wprowadz wartosc temperatury: ");
+                int wartosc = int.Parse(Console.ReadLine());
+
+                double wynik2 = 0;
+
+                if (zad2_option.Equals("C", StringComparison.OrdinalIgnoreCase))
+                {
+                    wynik2 = wartosc * 1.8 + 32;
+                    return $"Wynik = {wynik2}°F";
+                }
+                else if (zad2_option.Equals("F", StringComparison.OrdinalIgnoreCase))
+                {
+                    wynik2 = (wartosc - 32) / 1.8;
+                    return $"Wynik = {wynik2}°C";
+                }
+                else
+                {
+                    return "Blednie wprowadzony kierunek konwersji";
+                }
             case 3:
                 //Console.WriteLine("Srednia ocen ucznia");
             default:
